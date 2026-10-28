@@ -1,18 +1,28 @@
 #include "main.h"
 
 /**
- * print_line - Prints a straight line
- * @n: Number of underscores to print
+ * print_diagonal - Draws a diagonal line
+ * @n: Number of lines
  *
  * Return: void
  */
-void print_line(int n)
+void print_diagonal(int n)
 {
-	int i;
+	int i, j;
+
+	if (n <= 0)
+	{
+		_putchar('\n');
+		return;
+	}
 
 	for (i = 0; i < n; i++)
 	{
+		for (j = 0; j < i; j++)
+		{
+			_putchar(' ');
+		}
+		_putchar('\\');
 		_putchar('\n');
 	}
-	_putchar('\n');
 }
