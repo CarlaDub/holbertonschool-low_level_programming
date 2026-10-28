@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * print_triangle - Prints a triangle using #
+ * @size: Size of the triangle
+ *
+ * Return: void
+ */
 void print_triangle(int size)
 {
 	int i, j;
@@ -10,13 +16,14 @@ void print_triangle(int size)
 		return;
 	}
 
-	for (i = 0; i < size; i++)
+	for (i = 1; i <= size; i++)
 	{
-		for (j = 0; j < size; j++)
-		{
+		for (j = 0; j < size - i; j++)
+			_putchar(' ');
+
+		for (j = 0; j < i; j++)
 			_putchar('#');
-			_putchar('.');
-		}
+
 		_putchar('\n');
 	}
 }
