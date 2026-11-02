@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <time.h>
 
+
 #define DATASET_SIZE 50000
 #define SEED_VALUE 42u
 
 static int dataset[DATASET_SIZE];
+static void build_dataset(void);
+static void process_dataset(void);
+static unsigned long reduce_checksum(void);
+
 
 static unsigned int next_value(unsigned int *state)
 {
@@ -44,31 +49,51 @@ static unsigned long reduce_checksum(void)
     int i;
 
     sum = 0;
+
     for (i = 0; i < DATASET_SIZE; i++)
         sum = (sum * 131ul) + (unsigned long)dataset[i];
 
     return sum;
 }
 
+
 int main(void)
 {
     unsigned long checksum;
+    clock_t total_start, total_end;
+    clock_t start, end;
+    double total_time;
+    double build_time;
+    double process_time;
+    double reduce_time;
 
-    /* Students must add clock-based timing and print required lines. */
+    total_start = clock();
 
+    start = clock();
     build_dataset();
+    end = clock();
+    build_time = (double)(end - start) / CLOCKS_PER_SEC;
+
+    start = clock();
     process_dataset();
+    end = clock();
+    process_time = (double)(end - start) / CLOCKS_PER_SEC;
+
+    start = clock();
     checksum = reduce_checksum();
+    end = clock();
+    reduce_time = (double)(end - start) / CLOCKS_PER_SEC;
+
+    total_end = clock();
+    total_time = (double)(total_end - total_start) / CLOCKS_PER_SEC;
 
     if (checksum == 0ul)
         printf("impossible\n");
 
-    /* Required output (exact format, no extra lines):
-     * TOTAL seconds: <float>
-     * BUILD_DATA seconds: <float>
-     * PROCESS seconds: <float>
-     * REDUCE seconds: <float>
-     */
+    printf("TOTAL seconds: %.6f\n", total_time);
+    printf("BUILD_DATA seconds: %.6f\n", build_time);
+    printf("PROCESS seconds: %.6f\n", process_time);
+    printf("REDUCE seconds: %.6f\n", reduce_time);
 
     return 0;
 }
