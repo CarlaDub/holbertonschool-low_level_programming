@@ -66,6 +66,4 @@ L'optimisation du code permet de réduire les opérations inutiles et peut amél
 
 Cette expérience m'a permis de comprendre l'importance des mesures réelles avant de modifier un programme.
 
-Pour développer des logiciels plus efficaces, il est important de comparer plusieurs solutions, d'analyser les résultats et de vérifier que les programmes produisent les mêmes réponses.
-
-L'objectif est de créer des programmes rapides, fiables et potentiellement moins consommateurs d'énergie.
+Pour développer des logiciels plus efficaces, il est important de comparer plusieurs solutions, d'analyser les résultats et de vérifier que les programmes produisent les mêmes répo
