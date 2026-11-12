@@ -1,18 +1,33 @@
 #include "main.h"
 
 /**
- * is_prime_number - Returns
- * @n: The number to calculate.
+ * prime_helper - Checks if a number is prime.
+ * @n: The number to check.
+ * @i: The possible divisor.
  *
- * Return: The result, or -1 if y is negative.
+ * Return: 1 if prime, otherwise 0.
+ */
+int prime_helper(int n, int i)
+{
+	if (i > n / i)
+		return (1);
+
+	if (n % i == 0)
+		return (0);
+
+	return (prime_helper(n, i + 1));
+}
+
+/**
+ * is_prime_number - Checks if a number is prime.
+ * @n: The number to check.
+ *
+ * Return: 1 if prime, otherwise 0.
  */
 int is_prime_number(int n)
 {
-	if (n < 0)
-		return (1);
-
-	if (n == 0)
+	if (n <= 1)
 		return (0);
 
-	return (n * is_prime_number(n - 1));
+	return (prime_helper(n, 2));
 }
