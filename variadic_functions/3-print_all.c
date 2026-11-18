@@ -3,32 +3,47 @@
 #include <stdarg.h>
 
 /**
- * print_all - 
+ * print_all - Prints anything
+ * @format: List of types of arguments
  *
  * Return: Nothing (void)
  */
 void print_all(const char * const format, ...)
 {
-	const char * const format;
+	va_list args;
+	unsigned int i = 0;
+	char *str;
+	char *separator = "";
 
-	format (
-			char = c;
-			integer = c;
-			float = f;
-			char * = s;
+	va_start(args, format);
 
-			if (str == NULL) {
-                             printf("(nil)\n");
-                           } else {
-                            printf("%s\n", str);
-                           }
-	
-			   while true
+	while (format != NULL && format[i] != '\0')
+	{
+		switch (format[i])
+		{
+			case 'c':
+				printf("%s%c", separator, va_arg(args, int));
+				break;
+			case 'i':
+				printf("%s%d", separator, va_arg(args, int));
+				break;
+			case 'f':
+				printf("%s%f", separator, va_arg(args, double));
+				break;
+			case 's':
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(nil)";
+				printf("%s%s", separator, str);
+				break;
+			default:
+				i++;
+				continue;
+		}
+		separator = ", ";
+		i++;
+	}
 
-			   if
-
-			   while 
-
-			   if
-
+	va_end(args);
+	printf("\n");
 }
