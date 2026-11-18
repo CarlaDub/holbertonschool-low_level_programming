@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
- * main - Adds two numbers
+ * main - Adds positive numbers
  * @argc: Number of command line arguments
  * @argv: Array of command line arguments
  *
@@ -10,17 +11,21 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b;
+	int i, j, sum = 0;
 
-	if (argc != 3)
+	for (i = 1; i < argc; i++)
 	{
-		printf("Error\n");
-		return (1);
+		for (j = 0; argv[i][j] != '\0'; j++)
+		{
+			if (!isdigit((unsigned char)argv[i][j]))
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		sum += atoi(argv[i]);
 	}
 
-	a = atoi(argv[1]);
-	b = atoi(argv[2]);
-
-	printf("%d\n", a + b);
+	printf("%d\n", sum);
 	return (0);
 }
