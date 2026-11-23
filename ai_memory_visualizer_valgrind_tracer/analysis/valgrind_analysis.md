@@ -1,6 +1,6 @@
 # 1. Valgrind & AI Memory Tracer
 
-## 1 Objective — Objectif de l'analyse.
+## 1 Objective — 
 
 
 
